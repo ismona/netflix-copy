@@ -7,7 +7,7 @@
 
 				<input type="password" placeholder="password" id="password" v-model.trim="password" />
 				<button>Log In</button>
-				<p v-if="!formIsValid">Please enter a valid email and password must be at least 6 characters long.</p>
+				<p v-if="!formIsValid">Please enter a valid email and password.</p>
 			</form>
 			<router-link to="/register" class="link">Don't have an account? Sign Up.</router-link>
 		</div>
@@ -26,13 +26,13 @@ export default {
 	methods: {
 		submitForm() {
 			this.formIsValid = true
-			if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
-				this.formIsValid = false
-				return
-			} else {
-				this.$store.dispatch('login', { email: this.email, password: this.password })
-				this.$router.push({ path: '/userpage' })
-			}
+			this.$store
+				.dispatch('login', { email: this.email, password: this.password })
+				.then(() => this.$router.push({ path: '/userpage' }))
+				.catch((error) => {
+					console.log(error)
+					this.formIsValid = false
+				})
 		},
 	},
 }
@@ -68,6 +68,7 @@ input {
 	padding: 0.3rem 1rem;
 	font-size: 1rem;
 	box-sizing: border-box;
+	color: white;
 }
 
 button {
@@ -92,5 +93,4 @@ button {
 .link {
 	color: #fff;
 }
-
 </style>

@@ -68,6 +68,7 @@ input {
 	padding: 0.3rem 1rem;
 	font-size: 1rem;
 	box-sizing: border-box;
+	color: white;
 }
 
 button {

@@ -61,8 +61,8 @@ const store = createStore({
 	getters: {
 		token(state) {
 			return state.token
-		}
-	}
+		},
+	},
 })
 
 app.use(router)
