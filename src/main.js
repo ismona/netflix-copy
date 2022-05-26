@@ -18,6 +18,7 @@ const store = createStore({
 			state.token = payload.token
 			state.userId = payload.userId
 			state.tokenExpiration = payload.tokenExporation
+			localStorage.setItem('user', state.userId)
 		},
 	},
 	actions: {
@@ -56,6 +57,9 @@ const store = createStore({
 					tokenExpiration: responseData.expiresIn,
 				})
 			}
+		},
+		async logout(context) {
+			context.commit('setUser', {})
 		},
 	},
 	getters: {
