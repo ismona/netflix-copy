@@ -6,7 +6,7 @@ import LoginPage from './components/pages/LoginPage.vue'
 import UserPage from './components/pages/UserPage.vue'
 import MovieDetails from './components/pages/MovieDetails.vue'
 
-//import store from './store.js'
+import store from './store.js'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -22,7 +22,7 @@ const router = createRouter({
 			path: '/userpage',
 			name: 'User Page',
 			beforeEnter: (to, from, next) => {
-				if (localStorage.getItem('token') == false) {
+				if (store.getters.isLoggedIn == false) {
 					console.log(false)
 					next({ name: 'Login' })
 				} else {
