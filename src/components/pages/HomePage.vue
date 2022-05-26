@@ -33,6 +33,7 @@ h1 {
 	border: none;
 	padding: 0.5rem 1rem;
 	font-size: 1.5rem;
+	border-radius: 5px;
 }
 a {
 	text-decoration: none;
