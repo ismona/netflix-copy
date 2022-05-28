@@ -21,13 +21,11 @@ const router = createRouter({
 		{
 			path: '/userpage',
 			name: 'User Page',
-			beforeEnter: async (to, from, next) => {
+			beforeEnter: (to, from, next) => {
 				const isLoggedIn = localStorage.getItem('token')
 				if (isLoggedIn) {
-					console.log(true + ' .... ' + store.getters.isLoggedIn)
 					next()
 				} else {
-					console.log(false + ' .... ' + store.getters.isLoggedIn)
 					next({ name: 'Login' })
 				}
 			},
